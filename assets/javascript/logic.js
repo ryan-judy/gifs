@@ -5,6 +5,10 @@ $(document).ready(function() {
 	var buttons;
 	var response;
 	var data;
+	var showDiv = false;
+	var newDiv = true;
+			      var click = 0;
+
 
 
 	//declare jQuery
@@ -19,9 +23,10 @@ $(document).ready(function() {
 		"Master of None",
 		"The Handmaid's Tale",
 		"Bob's Burgers",
+		"The Great British Baking Show",
+		"Big Little Lies",
+		"The Get Down"
 	]
-
-
 
 	//loop through array to create buttons
       function renderButtons() {
@@ -45,18 +50,38 @@ $(document).ready(function() {
     
 	    var showCall = $.get(queryURL);
 	    showCall.done(function(response) {
-	    	console.log(response)
-	      console.log(response.data[0].images);
-	      for (var i = 0; i < response.data.length; i++) {
-	      var gifs = response.data[i];
-	      var showDiv = $("<img><div class= 'show'>");
-	      showDiv.prepend("Rating: " + gifs.rating + "<br>" );	      
-	      showDiv.attr("src", gifs.images.original_still.url);
-	      $(".show-view").append(showDiv);
+			console.log(response)
+	      	for (var i = 0; i < response.data.length; i++) {
+		      var gifs = response.data[i];
+		      showDiv = $("<img><div class= 'gifs'>");
+		      showDiv.attr("src", gifs.images.fixed_height_still.url);
+		      showDiv.attr("data-name", i);
+		      showDiv.addClass("gif-style");
+		      //showDiv.addClass("clearfix::after");
+		      showDiv.prepend("Rating: " + gifs.rating + "<br>" );
+		    $(".show-view").append(showDiv);
+			    showDiv.on("click", function () {
+			      var number = $(this).attr("data-name");
+			      newDiv = $("<img><div class= 'new'>");
+			      click++;
+			      $(this).attr("src", response.data[number].images.fixed_height.url);
+		      	    	if (click > 1) {
+			      			$(this).attr("src", response.data[number].images.fixed_height_still.url);
+			      			click = 0;
+			      		} 
+			})
+		    }
 
-	      }
-	    });
+			$(".add-show").on("click", function(event) {
+		       	event.preventDefault();
+		       	var newShow = $(".show-input").val()
+		       	shows.push(newShow);
+		       	renderButtons();
+		      	});
+
+		});
 	}
+
 
       // Adding click event listeners to all elements with a class of "movie"
       $(document).on("click", ".show", loadShows);
