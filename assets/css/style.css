@@ -17,6 +17,11 @@ p {
 	margin: 10px 0px;
 }
 
+.gifs {
+	float: left;
+	margin: 10px;
+}
+
 .clearfix {
     content: "";
     clear: both;

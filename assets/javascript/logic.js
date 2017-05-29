@@ -53,16 +53,16 @@ $(document).ready(function() {
 			console.log(response)
 	      	for (var i = 0; i < response.data.length; i++) {
 		      var gifs = response.data[i];
-		      showDiv = $("<img><div class= 'gifs'>");
-		      showDiv.attr("src", gifs.images.fixed_height_still.url);
-		      showDiv.attr("data-name", i);
-		      showDiv.addClass("gif-style");
-		      //showDiv.addClass("clearfix::after");
+		      showDiv = $("<div class= 'gifs'>");
+		      gifDiv = $("<img>");
+		      gifDiv.attr("src", gifs.images.fixed_height_still.url);
+		      gifDiv.addClass("gif-style");
+		      gifDiv.attr("data-name", i);		      
+		      showDiv.append(gifDiv);
 		      showDiv.prepend("Rating: " + gifs.rating + "<br>" );
 		    $(".show-view").append(showDiv);
-			    showDiv.on("click", function () {
+			    gifDiv.on("click", function () {
 			      var number = $(this).attr("data-name");
-			      newDiv = $("<img><div class= 'new'>");
 			      click++;
 			      $(this).attr("src", response.data[number].images.fixed_height.url);
 		      	    	if (click > 1) {
