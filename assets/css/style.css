@@ -2,13 +2,20 @@
   box-sizing: border-box;
 }
 
-p {
-	display: flex;
+body {
+	background-image: url(../images/background.png);
+	font-family: 'Bree Serif', serif;
 }
+
+h3 {
+	font-size: 18px;
+	padding-bottom: 10px;
+}
+
 .show {
 	width: 200px;
     height: 50px;
-    margin: 10px 20px 10px 0px;
+    margin: 10px 10px 10px 0px;
     float: left;
 }
 
@@ -30,4 +37,11 @@ p {
 
 .show-view {
 	float: left;
+}
+
+.btn {
+	background-color: #d9534f;
+	color: white;
+	text-align: center;
+	font-size: 13px;
 }

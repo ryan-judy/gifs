@@ -25,7 +25,6 @@ $(document).ready(function() {
 		"Bob's Burgers",
 		"The Great British Baking Show",
 		"Big Little Lies",
-		"The Get Down"
 	]
 
 	//loop through array to create buttons
@@ -33,7 +32,7 @@ $(document).ready(function() {
         buttons.empty();
         // Loops through the array of movies
         for (var i = 0; i < shows.length; i++) {
-          var a = $("<button>");
+          var a = $("<button class = btn>");
           a.addClass("show");
           a.attr("data-name", shows[i]);
           a.text(shows[i]);
@@ -59,7 +58,7 @@ $(document).ready(function() {
 		      gifDiv.addClass("gif-style");
 		      gifDiv.attr("data-name", i);		      
 		      showDiv.append(gifDiv);
-		      showDiv.prepend("Rating: " + gifs.rating + "<br>" );
+		      showDiv.prepend("<h3>Rating: " + gifs.rating + "</h3>" );
 		    $(".show-view").append(showDiv);
 			    gifDiv.on("click", function () {
 			      var number = $(this).attr("data-name");
