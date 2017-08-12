@@ -7,8 +7,8 @@ This application uses the GIPHY API to make a dynamic web page that populates wi
 1. HTML
 2. CSS
 3. JavaScript
-4, jQuery
+4. jQuery
 5. AJAX
 6. GIPHY API
 
-[View the application live on GitHub!] (https://ryan-judy.github.io/gifs/)
+[View the application live on GitHub!](https://ryan-judy.github.io/gifs/)
